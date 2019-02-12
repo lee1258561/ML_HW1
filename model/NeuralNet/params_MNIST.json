@@ -1,0 +1,1 @@
+{"activation": "logistic", "alpha": 1e-06, "hidden_layer_sizes": [64, 32, 16], "learning_rate": "adaptive", "learning_rate_init": 0.0001, "max_iter": 1000, "random_state": 123565432, "solver": "adam"}
