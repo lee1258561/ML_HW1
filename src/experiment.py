@@ -194,82 +194,82 @@ def experiment2(data_dir='data', fig_dir='fig', scoring='accuracy'):
 				 'AdaBoost', 
 				 'NeuralNet']
 
-	# fig_path = create_path(fig_dir, task, 'experiment')
-	# print ("\t\tTrain Acc\tTest Acc\tVal Score\t\tTrue pos\tTrue neg\tFalse pos\tFlase neg\tF1 score\tTrain t\tTest t")
-	# for clf in exp_model:
-	# 	model = Model(clf=clf, 
-	# 				  scoring=scoring, 
-	# 				  model_suffix=task, 
-	# 				  load_params=True, 
-	# 				  verbose=False)
-	# 	# model.generate_learning_curve(X_train, 
-	# 	#                               y_train, 
-	# 	#                               ylim=(0.0, 1.01), 
-	# 	#                               train_sizes=np.linspace(.1, 1.0, 5),
-	# 	#                               fig_path=fig_path,
-	# 	#                               scoring='accuracy')
-	# 	start = time()
-	# 	train_acc, cv_scores, train_f1, report = model.train(X_train, y_train)
-	# 	train_end = time()
-	# 	y_pred, test_acc, c_matrix, f1, report = model.test(X_test, y_test=y_test)
-	# 	test_end = time()
+	fig_path = create_path(fig_dir, task, 'experiment')
+	print ("\t\tTrain Acc\tTest Acc\tVal Score\t\tTrue pos\tTrue neg\tFalse pos\tFlase neg\tF1 score\tTrain t\tTest t")
+	for clf in exp_model:
+		model = Model(clf=clf, 
+					  scoring=scoring, 
+					  model_suffix=task, 
+					  load_params=True, 
+					  verbose=False)
+		model.generate_learning_curve(X_train, 
+		                              y_train, 
+		                              ylim=(0.0, 1.01), 
+		                              train_sizes=np.linspace(.1, 1.0, 5),
+		                              fig_path=fig_path,
+		                              scoring='accuracy')
+		start = time()
+		train_acc, cv_scores, train_f1, report = model.train(X_train, y_train)
+		train_end = time()
+		y_pred, test_acc, c_matrix, f1, report = model.test(X_test, y_test=y_test)
+		test_end = time()
 
-	# 	print("%s\t%0.03f\t\t%0.03f\t\t%s\t%d\t\t%d\t\t%d\t\t%d\t\t%0.03f\t\t%0.03f\t\t%0.03f" %
-	# 		(clf + '\t' if len(clf) < 8 else clf,
-	# 		 train_acc, 
-	# 		 test_acc, 
-	# 		 "%0.3f (+/- %0.3f)" % (np.mean(cv_scores['test_score']), np.std(cv_scores['test_score'])),
-	# 		 c_matrix[1][1],
-	# 		 c_matrix[0][0],
-	# 		 c_matrix[0][1],
-	# 		 c_matrix[1][0],
-	# 		 f1,
-	# 		 train_end - start,
-	# 		 test_end - train_end))
+		print("%s\t%0.03f\t\t%0.03f\t\t%s\t%d\t\t%d\t\t%d\t\t%d\t\t%0.03f\t\t%0.03f\t\t%0.03f" %
+			(clf + '\t' if len(clf) < 8 else clf,
+			 train_acc, 
+			 test_acc, 
+			 "%0.3f (+/- %0.3f)" % (np.mean(cv_scores['test_score']), np.std(cv_scores['test_score'])),
+			 c_matrix[1][1],
+			 c_matrix[0][0],
+			 c_matrix[0][1],
+			 c_matrix[1][0],
+			 f1,
+			 train_end - start,
+			 test_end - train_end))
 
 
 
-	# fig_path = create_path(fig_dir, task, 'experiment', 'PCA')
-	# print ('Total number of features that is non zero: %d' % total)
+	fig_path = create_path(fig_dir, task, 'experiment', 'PCA')
+	print ('Total number of features that is non zero: %d' % total)
 
-	# print ("Dimension reduction using PCA ...")
-	# pca = PCA(n_components=115)
-	# pca.fit(X_train)
-	# X_train = pca.transform(X_train)
-	# X_test = pca.transform(X_test)
-	# print("Precentage of covarence preserved: %0.03f" % np.sum(pca.explained_variance_ratio_)) 
+	print ("Dimension reduction using PCA ...")
+	pca = PCA(n_components=115)
+	pca.fit(X_train)
+	X_train = pca.transform(X_train)
+	X_test = pca.transform(X_test)
+	print("Precentage of covarence preserved: %0.03f" % np.sum(pca.explained_variance_ratio_)) 
 
-	# print ("\t\tTrain Acc\tTest Acc\tVal Score\t\tTrue pos\tTrue neg\tFalse pos\tFlase neg\tF1 score\tTrain t\tTest t")
-	# for clf in exp_model:
-	# 	model = Model(clf=clf, 
-	# 				  scoring=scoring, 
-	# 				  model_suffix=task, 
-	# 				  load_params=True, 
-	# 				  verbose=False)
-	# 	model.generate_learning_curve(X_train, 
-	# 	                              y_train, 
-	# 	                              ylim=(0.0, 1.01), 
-	# 	                              train_sizes=np.linspace(.1, 1.0, 5),
-	# 	                              fig_path=fig_path,
-	# 	                              scoring='accuracy')
-	# 	start = time()
-	# 	train_acc, cv_scores, train_f1, report = model.train(X_train, y_train)
-	# 	train_end = time()
-	# 	y_pred, test_acc, c_matrix, f1, report = model.test(X_test, y_test=y_test)
-	# 	test_end = time()
+	print ("\t\tTrain Acc\tTest Acc\tVal Score\t\tTrue pos\tTrue neg\tFalse pos\tFlase neg\tF1 score\tTrain t\tTest t")
+	for clf in exp_model:
+		model = Model(clf=clf, 
+					  scoring=scoring, 
+					  model_suffix=task, 
+					  load_params=True, 
+					  verbose=False)
+		model.generate_learning_curve(X_train, 
+		                              y_train, 
+		                              ylim=(0.0, 1.01), 
+		                              train_sizes=np.linspace(.1, 1.0, 5),
+		                              fig_path=fig_path,
+		                              scoring='accuracy')
+		start = time()
+		train_acc, cv_scores, train_f1, report = model.train(X_train, y_train)
+		train_end = time()
+		y_pred, test_acc, c_matrix, f1, report = model.test(X_test, y_test=y_test)
+		test_end = time()
 
-	# 	print("%s\t%0.03f\t\t%0.03f\t\t%s\t%d\t\t%d\t\t%d\t\t%d\t\t%0.03f\t\t%0.03f\t\t%0.03f" %
-	# 		(clf + '\t' if len(clf) < 8 else clf,
-	# 		 train_acc, 
-	# 		 test_acc, 
-	# 		 "%0.3f (+/- %0.3f)" % (np.mean(cv_scores['test_score']), np.std(cv_scores['test_score'])),
-	# 		 c_matrix[1][1],
-	# 		 c_matrix[0][0],
-	# 		 c_matrix[0][1],
-	# 		 c_matrix[1][0],
-	# 		 f1,
-	# 		 train_end - start,
-	# 		 test_end - train_end))
+		print("%s\t%0.03f\t\t%0.03f\t\t%s\t%d\t\t%d\t\t%d\t\t%d\t\t%0.03f\t\t%0.03f\t\t%0.03f" %
+			(clf + '\t' if len(clf) < 8 else clf,
+			 train_acc, 
+			 test_acc, 
+			 "%0.3f (+/- %0.3f)" % (np.mean(cv_scores['test_score']), np.std(cv_scores['test_score'])),
+			 c_matrix[1][1],
+			 c_matrix[0][0],
+			 c_matrix[0][1],
+			 c_matrix[1][0],
+			 f1,
+			 train_end - start,
+			 test_end - train_end))
 
 	dt_params = {
 				'criterion': 'gini',

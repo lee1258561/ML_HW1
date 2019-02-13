@@ -173,13 +173,6 @@ def run_one(filename, task, clf, data_dir='data', scoring='accuracy', fold_num=5
 				  verbose=False)
 
 	fig_path = create_path(fig_dir, task, 'test')
-	if clf == 'DecisionTree':
-		from sklearn import tree
-		import graphviz
-		model.train(X_train, y_train, params=params_map[clf])
-		dot_data = tree.export_graphviz(model.model, out_file=None, rounded=True) 
-		graph = graphviz.Source(dot_data) 
-		graph.render("test")
 
 	if f1_fig:
 		model.generate_learning_curve(X_train, 

@@ -109,7 +109,7 @@ def preprocess_MNIST(data_dir='data', size=None):
 	write_csv(processed, filepath)
 
 if __name__ == "__main__":
-	#preprocess_creditcard('./data/creditcard.csv', size=5000, proportion=0.1)
+	preprocess_creditcard('./data/creditcard.csv', size=5000, proportion=0.1)
 	preprocess_MNIST(size=1000)
 
     
